@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .container {
+    max-width: 70vw;
+    height: 100%;
+    margin: auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  
+.table-wrapper {
+    max-height: 60vh;
+    overflow: hidden;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2.5vh;
+  }
+  
+  .form-control {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .form-select {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  #submitButton {
+    margin-top: 4vh;
+    margin-left: 12rem;
+  }
+
+  #csvButton{
+    margin-top: 4vh;
+    margin-left: 6rem;
+    align-items: center;
+  }
+
+  
+  #myCheckBox {
+    margin-left: 2.8vw;
+  }
+  
+  #submitForm {
+    margin-top: 3rem;
+    width: 75%;
+    margin: auto;
+  }
+  
+  #taskInTable {
+    max-width: 100%;
+  }
+  
+  .edit {
+    border: 2px solid orange;
+  }
+  
+  .not-edit {
+    border: none;
+  }
+  
+  .crossed {
+    text-decoration: line-through;
+  }
+  
+  td, th {
+    width: 1rem;
+    padding: 0.4rem 0.2rem 0.4rem 0rem;
+  }
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .form-control,
+    .form-select {
+      width: 80%;
+    }
+  
+    td, th {
+      padding: 0.3rem 0.1rem 0.3rem 0rem;
+    }
+  
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .form-control,
+    .form-select {
+      width: 70%;
+    }
+  
+    td, th {
+      padding: 0.3rem 0.1rem 0.3rem 0rem;
+    }
+  
+    h1 {
+      font-size: 1.6rem;
+    }
+  
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .button-group button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .form-control,
+    .form-select {
+      width: 60%;
+    }
+  
+    td, th {
+      padding: 0.3rem 0.1rem 0.3rem 0rem;
+    }
+  
+    h1 {
+      font-size: 1.4rem;
+    }
+  
+    #myCheckBox {
+      margin-left: 1.5vw;
+    }
+  
+    .button-group {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .button-group button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .form-control,
+    .form-select {
+      width: 100%;
+    }
+  
+    td, th {
+      padding: 0.2rem 0.1rem 0.2rem 0rem;
+    }
+  
+    h1 {
+      font-size: 1.2rem;
+    }
+  
+    #myCheckBox {
+      margin-left: 1vw;
+    }
+  
+    #submitButton {
+      margin-top: 2vh;
+    }
+  
+    #submitForm {
+      margin-top: 1.5rem;
+    }
+  
+    .button-group {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .button-group button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+  

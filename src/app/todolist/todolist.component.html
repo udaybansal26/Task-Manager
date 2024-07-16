@@ -1,0 +1,164 @@
+<div class="container">
+  <h1>Task Manager</h1>
+  <hr />
+
+  <!-- Form for Data Input -->
+
+  <form id="submitForm" (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+    <div class="form-group my-4">
+      <input
+        style="width: 50vw"
+        type="text"
+        class="form-control"
+        id="task"
+        placeholder="Enter task"
+        ngModel
+        name="task"
+        required
+      />
+      <!-- <small
+        id="errorMessage"
+        class="form-text text-danger"
+        *ngIf="taskForm.invalid && taskForm.dirty"
+        >Required field</small
+      > -->
+    </div>
+    <div class="form-group">
+      <input
+        style="width: 50vw"
+        type="date"
+        class="form-control"
+        id="dueDate"
+        placeholder="Enter Due Date"
+        ngModel
+        name="date"
+        required
+      />
+      <!-- <small
+        id="errorMessage"
+        class="form-text text-danger"
+        *ngIf="taskForm.invalid && taskForm.dirty"
+        >Required field</small
+      > -->
+    </div>
+    <input
+      style="width: 50vw"
+      type="text"
+      class="form-control my-3"
+      id="desc"
+      value="Enter Description"
+      placeholder="Enter Description"
+      ngModel
+      name="description"
+      required
+    />
+    <br />
+    <!-- <small
+    id="errorMessage"
+    class="form-text text-danger"
+    *ngIf="taskForm.invalid && taskForm.dirty"
+    >Required field</small
+  > -->
+    <div>
+      <label for="priority">Choose the Priority :&ensp;</label>
+
+      <select id="priority" value="high" ngModel name="priority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+      <button
+        id="submitButton"
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="taskForm.invalid"
+      >
+        Submit
+      </button>
+      <button type="button" id="csvButton" class="btn btn-secondary" (click)="exportToCSV()">
+        Export to CSV
+      </button>
+  </form>
+  <hr />
+
+  <!-- table for tasks -->
+   
+  <div class="table-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 5rem">Task</th>
+        <th scope="col">Completed</th>
+        <th scope="col">In Progress</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Due Date</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of taskArray; index as i">
+        <td style="width: 5rem">
+          <input
+            #taskinput
+            [ngClass]="{'edit':t.isEditable, 'not-edit':!t.isEditable ,'crossed':t.isCompleted,}"
+            type="text"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="{{ t.description }}"
+            class="form-control"
+            id="taskInTable"
+            value="{{ t.taskname }}"
+            [readonly]="!t.isEditable"
+          />
+        </td>
+        <td>
+          <input
+            style="width: 1.8vw"
+            id="myCheckBox"
+            type="checkbox"
+            (change)="onCheck(i)"
+            [disabled]="t.isProgress"
+          />
+        </td>
+        <td>
+          <input
+            style="width: 1.8vw"
+            id="myCheckBox"
+            type="checkbox"
+            (change)="onProgress(i)"
+            [disabled]="t.isCompleted"
+          />
+        </td>
+        <td>{{ t.priority }}</td>
+        <td>{{ t.dueDate }}</td>
+        <td>
+          <button
+            class="btn btn-danger btn-sm"
+            id="delete"
+            (click)="onDelete(i)"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
+          <button
+            class="btn btn-primary btn-sm mx-2"
+            id="edit"
+            (click)="onEdit(i)"
+            [disabled]="t.isEditable"
+          >
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <button
+            class="btn btn-warning btn-sm"
+            id="save"
+            (click)="onSave(i, taskinput.value)"
+            [disabled]="!t.isEditable"
+          >
+            <i class="fa-solid fa-check-double"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
